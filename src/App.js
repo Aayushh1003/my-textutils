@@ -6,9 +6,10 @@ import React,{useState} from 'react'
 import Alert from './components/Alert';
 import About from './components/About';
 import {
-  HashRouter  as Router,
+  BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 
 function App() {
@@ -32,14 +33,14 @@ function App() {
       setmode("dark");
       document.body.style.backgroundColor = "grey";
       showAlert("Dark mode has been enabled","success");
-      // document.title = "TextUtils-Dark Mode";
+      document.title = "TextUtils-Dark Mode";
     }
 
     else{
       setmode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode has been enabled","success");
-      // document.title = "TextUtils-Light Mode";
+      document.title = "TextUtils-Light Mode";
     }
   }
   return (
@@ -49,10 +50,9 @@ function App() {
       <Alert alert={alert}/>
       <div className="container my-3">
       <Routes>
-          <Route exact path="/about" element={<About mode={mode} />}/>
+          <Route exact path="/about" element={<About/>}/>
           {/* </Route> */}
-          <Route exact path="/" element={<TextForm showAlert={showAlert} heading = "Try Textutils - Word counter,Character counter, Remove extra spcaes" mode={mode} />}/>
-          {/* <TextForm showAlert={showAlert} heading = "Enter the text to analyse below" mode={mode} /> */}
+          <Route exact path="/" element={<TextForm showAlert={showAlert} heading = "Enter the text to analyse below" mode={mode} />}/>
           {/* </Route> */}
       </Routes>
       </div>
